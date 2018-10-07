@@ -3,8 +3,6 @@ env:
    global:
      - CONAN_DOCKER_32_IMAGES: 1
      - CONAN_REFERENCE: "gperf/3.1"
-     - CONAN_USERNAME: "conan"
-     - CONAN_LOGIN_USERNAME: "conanbot"
      - CONAN_CHANNEL: "testing"
      - CONAN_UPLOAD: "https://api.bintray.com/conan/conan-community/conan"
      - CONAN_STABLE_BRANCH_PATTERN: "release/*"
