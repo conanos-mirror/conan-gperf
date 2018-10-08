@@ -45,7 +45,6 @@ class GperfConan(ConanFile):
                 args.append('--enable-static')
             if self.settings.build_type == 'Debug':
                 args.append('--enable-debug')
-            args.append('--bit-depth=%s' % str(self.options.bit_depth))
 
             env_vars = dict()
             env_vars['CC'] = 'cl'
