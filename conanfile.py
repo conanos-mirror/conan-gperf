@@ -76,7 +76,7 @@ class GperfConan(ConanFile):
                     #env_build.flags.append('-FS')  # cannot open program database ... if multiple CL.EXE write to the same .PDB file, please use /FS
                     #print_environ()
                     #env_build.configure(args=['--help', ], build=False, host=False)
-                    env_build.configure(args=args, build=False, host=None)
+                    env_build.configure(args=args, build=False, host='i686-w64-mingw32')
                     env_build.make()
                     env_build.make(args=['install'])
             except:
