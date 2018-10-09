@@ -3,6 +3,13 @@ import os
 from conans import ConanFile, tools, AutoToolsBuildEnvironment
 
 
+def print_environ():
+    print("--- environ ---")
+    for key, val in os.environ.items():
+        print("\t{}:\t{}".format(key, val))
+    print("--- environ ---")
+
+
 class GperfConan(ConanFile):
     name = "gperf"
     version = "3.1"
@@ -52,6 +59,7 @@ class GperfConan(ConanFile):
                 env_build = AutoToolsBuildEnvironment(self, win_bash=win_bash)
                 env_build.flags.append('-%s' % str(self.settings.compiler.runtime))
                 env_build.flags.append('-FS')  # cannot open program database ... if multiple CL.EXE write to the same .PDB file, please use /FS
+                print_environ()
                 env_build.configure(args=args, build=False, host=False)
                 env_build.make()
                 env_build.make(args=['install'])
