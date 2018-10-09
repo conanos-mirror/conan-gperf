@@ -63,7 +63,7 @@ class GperfConan(ConanFile):
                     'LD="link"',
                     'NM="dumpbin -symbols"',
                     'STRIP=":"',
-                    'AR="{}/build-aux/ar-lib lib"',
+                    'AR="{}/build-aux/ar-lib lib"'.format(cwd),
                     'RANLIB=":"'
                     ]
 
