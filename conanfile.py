@@ -53,14 +53,28 @@ class GperfConan(ConanFile):
             if self.settings.build_type == 'Debug':
                 args.append('--enable-debug')
 
+            cwd = os.getcwd()
+            args = ['CC="{}/build-aux/compile cl -nologo"'.format(cwd),
+                    'CFLAGS = "-{}"'.format(self.settings.compiler.runtime),
+                    'CXX = "{}/build-aux/compile cl -nologo"'.format(cwd),
+                    'CXXFLAGS = "-{}"'.format(self.settings.compiler.runtime),
+                    'CPPFLAGS = "-D_WIN32_WINNT=_WIN32_WINNT_WIN8 -I/usr/local/msvc32/include"',
+                    'LDFLAGS = "-L/usr/local/msvc32/lib"',
+                    'LD = "link"',
+                    'NM = "dumpbin -symbols"',
+                    'STRIP = ":"',
+                    'AR = "{}/build-aux/ar-lib lib"',
+                    'RANLIB = ":"'
+                    ]
+
             env_vars = dict()
-            env_vars['CC'] = 'cl'
+            #env_vars['CC'] = 'cl'
             with tools.environment_append(env_vars):
                 env_build = AutoToolsBuildEnvironment(self, win_bash=win_bash)
-                env_build.flags.append('-%s' % str(self.settings.compiler.runtime))
-                env_build.flags.append('-FS')  # cannot open program database ... if multiple CL.EXE write to the same .PDB file, please use /FS
-                print_environ()
-                env_build.configure(args=['--help', ], build=False, host=False)
+                #env_build.flags.append('-%s' % str(self.settings.compiler.runtime))
+                #env_build.flags.append('-FS')  # cannot open program database ... if multiple CL.EXE write to the same .PDB file, please use /FS
+                #print_environ()
+                #env_build.configure(args=['--help', ], build=False, host=False)
                 env_build.configure(args=args, build=False, host=None)
                 env_build.make()
                 env_build.make(args=['install'])
