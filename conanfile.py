@@ -55,16 +55,16 @@ class GperfConan(ConanFile):
 
             cwd = os.getcwd()
             args = ['CC="{}/build-aux/compile cl -nologo"'.format(cwd),
-                    'CFLAGS = "-{}"'.format(self.settings.compiler.runtime),
-                    'CXX = "{}/build-aux/compile cl -nologo"'.format(cwd),
-                    'CXXFLAGS = "-{}"'.format(self.settings.compiler.runtime),
-                    'CPPFLAGS = "-D_WIN32_WINNT=_WIN32_WINNT_WIN8 -I/usr/local/msvc32/include"',
-                    'LDFLAGS = "-L/usr/local/msvc32/lib"',
-                    'LD = "link"',
-                    'NM = "dumpbin -symbols"',
-                    'STRIP = ":"',
-                    'AR = "{}/build-aux/ar-lib lib"',
-                    'RANLIB = ":"'
+                    'CFLAGS="-{}"'.format(self.settings.compiler.runtime),
+                    'CXX="{}/build-aux/compile cl -nologo"'.format(cwd),
+                    'CXXFLAGS="-{}"'.format(self.settings.compiler.runtime),
+                    'CPPFLAGS="-D_WIN32_WINNT=_WIN32_WINNT_WIN8 -I/usr/local/msvc32/include"',
+                    'LDFLAGS="-L/usr/local/msvc32/lib"',
+                    'LD="link"',
+                    'NM="dumpbin -symbols"',
+                    'STRIP=":"',
+                    'AR="{}/build-aux/ar-lib lib"',
+                    'RANLIB=":"'
                     ]
 
             env_vars = dict()
