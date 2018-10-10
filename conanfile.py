@@ -13,9 +13,10 @@ def print_environ():
 class GperfConan(ConanFile):
     name = "gperf"
     version = "3.1"
-    license = "<Put the package license here>"
-    url = "<Package recipe repository url here, for issues about the package>"
-    description = "<Description of Gperf here>"
+    license = "GNU GPL v4"
+    url = "https://github.com/conan-community/conan-gperf"
+    homepage = "https://www.gnu.org/software/gperf/"
+    description = "GNU gperf is a perfect hash function generator"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
     default_options = "shared=False"
