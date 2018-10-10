@@ -46,7 +46,7 @@ class GperfConan(ConanFile):
             if self.options.shared:
                 args.extend(['--enable-shared', '--disable-static'])
             else:
-                args.append(['--enable-static', '--disable-shared'])
+                args.extend(['--enable-static', '--disable-shared'])
             if self.settings.build_type == 'Debug':
                 args.append('--enable-debug')
 
