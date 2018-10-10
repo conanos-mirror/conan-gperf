@@ -10,8 +10,12 @@ class GperfConan(ConanFile):
     homepage = "https://www.gnu.org/software/gperf/"
     description = "GNU gperf is a perfect hash function generator"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"shared": [True, False]}
-    default_options = "shared=False"
+    options = {"shared": [True, False], "fPIC": [True, False]}
+    default_options = "shared=False", "fPIC=True"
+
+    def config_options(self):
+        if self.settings.os == 'Windows':
+            del self.options.fPIC
 
     @property
     def is_msvc(self):
