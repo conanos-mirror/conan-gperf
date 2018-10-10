@@ -2,5 +2,8 @@ from conans import ConanFile
 
 
 class GperfTestConan(ConanFile):
+    settings = 'arch'
+
     def test(self):
-        self.run('gperf --version', run_environment=True)
+        if 'arm' not in self.settings.arch:
+            self.run('gperf --version', run_environment=True)
