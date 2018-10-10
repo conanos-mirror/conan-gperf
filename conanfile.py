@@ -53,7 +53,7 @@ class GperfConan(ConanFile):
             cwd = os.getcwd()
 
             win_bash = self.is_msvc or self.is_mingw_windows
-            if self.is_msvc or self.is_mingw_windows:
+            if self.is_msvc:
                 args.extend(['CC={}/build-aux/compile cl -nologo'.format(cwd),
                              'CFLAGS=-{}'.format(self.settings.compiler.runtime),
                              'CXX={}/build-aux/compile cl -nologo'.format(cwd),
